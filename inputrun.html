@@ -1,0 +1,38 @@
+<script>
+  function runner() {
+    var xhr = new XMLHttpRequest();
+    var mycmd = document.getElementById("in1").value;
+    xhr.open("GET", "http://65.2.31.103/cgi-bin/inputrun.py?c=" + mycmd, true);
+    xhr.send();
+
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState == 4) {
+        document.getElementById("p1").innerHTML = this.responseText;
+      }
+    };
+  }
+</script>
+<h1>Linux Live Interpreter using Python CGI</h1>
+<body class="body">
+  <h2 class="main">Enter your command : <input id="in1" class="input" /></h2>
+  <br />
+
+  <pre>
+        <h3><p id="p1" onkeyup = "runner()">Hey I am coming live ...</p></h3>
+
+    </pre>
+</body>
+<style>
+  .body {
+    background: rgb(0, 247, 255);
+    justify-content: center;
+    text-align: center;
+  }
+  .main {
+    margin-top: 100px;
+  }
+  .input {
+    width: 20%;
+    height: 4%;
+  }
+</style>
